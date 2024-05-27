@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SectionWhyChooseUs = styled.section`
+  height: 60vh;
   margin: 1rem 5.3rem;
   display: flex;
   justify-content: center;
@@ -10,12 +11,13 @@ export const SectionWhyChooseUs = styled.section`
 
 export const PerfectChoice = styled.figure`
   width: 40%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 
   img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 100%;
   }
@@ -26,6 +28,7 @@ export const WhyChoose = styled.aside`
   flex-direction: column;
   gap: 2rem;
   width: 60%;
+  height: 100%;
 
   h3 {
     color: ${(p) => p.theme["black"]};
