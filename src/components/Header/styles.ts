@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   padding: 1.6rem 5.3rem;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,6 +35,7 @@ export const NavLinks = styled.nav`
 
 export const ImageLogo = styled.img`
   position: relative;
+  cursor: pointer;
   top: -15px;
 `;
 
