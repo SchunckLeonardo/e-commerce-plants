@@ -68,7 +68,7 @@ export const PlantDesc = styled.div`
 
   & > p {
     color: ${(p) => p.theme["gray"]};
-    font-size: 0.9375rem;
+    font-size: 0.85rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;

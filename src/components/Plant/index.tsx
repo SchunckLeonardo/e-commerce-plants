@@ -1,31 +1,32 @@
 import { ShoppingCart } from "@phosphor-icons/react"
 import { PlantCard, PlantFigure, PlantDesc, AddToCartButton, PlantTags, Tag, Prices } from "./styles"
+import { IPlant } from "../../utils/PlantsList"
+import { FormatNumber } from "../../utils/formatNumber"
 
 interface PlantProps {
-  sale?: number
-  hot?: boolean
+  plant: IPlant
 }
 
-export function Plant({hot, sale}: PlantProps) {
+export function Plant({ plant }: PlantProps) {
   return (
     <PlantCard>
       <PlantFigure>
-        <img src="/images/plant01.jpg" />
+        <img src={plant.image} />
         <AddToCartButton className="cart">
           <ShoppingCart />
           Add to cart
         </AddToCartButton>
       </PlantFigure>
       <PlantDesc>
-        <p>Sit voluptatem</p>
+        <p>{plant.desc}</p>
         <Prices>
-          {sale && <p>{sale}.00 $</p>}
-          <strong>68.00 $</strong>
+          {plant.sale.isSaled && <p>{FormatNumber(plant.price)}</p>}
+          <strong>{plant.sale.isSaled ? FormatNumber(plant.price * plant.sale.value) : FormatNumber(plant.price)}</strong>
         </Prices>
       </PlantDesc>
       <PlantTags>
-        {hot && <Tag variant="hot">HOT</Tag>}
-        {sale && <Tag variant="sale">SALE</Tag>}
+        {plant.hot && <Tag variant="hot">HOT</Tag>}
+        {plant.sale.isSaled && <Tag variant="sale">SALE</Tag>}
       </PlantTags>
     </PlantCard>
   )

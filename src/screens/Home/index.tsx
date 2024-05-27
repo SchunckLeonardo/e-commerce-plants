@@ -2,6 +2,7 @@ import { Cactus, Leaf, PottedPlant } from "@phosphor-icons/react";
 import { Header } from "../../components/Header";
 import { SectionWhyChooseUs, PerfectChoice, WhyChoose, Qualities, Quality, PlantsGallery, SectionFeaturedProduct } from "./styles";
 import { Plant } from "../../components/Plant";
+import { PlantsList } from "../../utils/PlantsList";
 
 export function Home() {
   return (
@@ -45,7 +46,7 @@ export function Home() {
         <img src="/images/separator.png" />
         <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
         <PlantsGallery>
-          {Array.from({length: 10}).map((_, i) => <Plant hot sale={50} key={i} />)}
+          {PlantsList.map((plant) => <Plant plant={plant} key={plant.id} />)}
         </PlantsGallery>
       </SectionFeaturedProduct>
     </main>

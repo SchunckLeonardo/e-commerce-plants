@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const SectionWhyChooseUs = styled.section`
+  width: 80%;
   height: 60vh;
-  margin: 1rem 5.3rem;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
