@@ -1,6 +1,7 @@
 import { Cactus, Leaf, PottedPlant } from "@phosphor-icons/react";
 import { Header } from "../../components/Header";
-import { SectionWhyChooseUs, PerfectChoice, WhyChoose, Qualities, Quality } from "./styles";
+import { SectionWhyChooseUs, PerfectChoice, WhyChoose, Qualities, Quality, PlantsGallery, SectionFeaturedProduct } from "./styles";
+import { Plant } from "../../components/Plant";
 
 export function Home() {
   return (
@@ -39,6 +40,14 @@ export function Home() {
           </Qualities>
         </WhyChoose>
       </SectionWhyChooseUs>
+      <SectionFeaturedProduct>
+        <h1>Featured Product</h1>
+        <img src="/images/separator.png" />
+        <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <PlantsGallery>
+          {Array.from({length: 10}).map((_, i) => <Plant hot sale={50} key={i} />)}
+        </PlantsGallery>
+      </SectionFeaturedProduct>
     </main>
   )
 }
