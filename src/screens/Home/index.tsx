@@ -1,5 +1,4 @@
 import { Cactus, Leaf, PottedPlant } from "@phosphor-icons/react";
-import { Header } from "../../components/Header";
 import { SectionWhyChooseUs, PerfectChoice, WhyChoose, Qualities, Quality, PlantsGallery, SectionFeaturedProduct } from "./styles";
 import { Plant } from "../../components/Plant";
 import { PlantsList } from "../../utils/PlantsList";
@@ -7,7 +6,6 @@ import { PlantsList } from "../../utils/PlantsList";
 export function Home() {
   return (
     <main>
-      <Header />
       <SectionWhyChooseUs>
         <PerfectChoice>
           <img src="/images/whychooseus.jpg" />
