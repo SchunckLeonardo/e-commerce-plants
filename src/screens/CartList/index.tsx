@@ -1,7 +1,11 @@
 import { CartItem } from "../../components/CartItem";
+import { useCart } from "../../hooks/useCart";
+import { FormatNumber } from "../../utils/formatNumber";
 import { CartWrapper, TableContainer, FinishOrder, CouponSection, SummarySection, Subtotal, Total, CheckotButton } from "./styles";
 
 export function CartList() {
+  const { cart, getTotalPrice } = useCart()
+
   return (
     <CartWrapper>
       <h1>Cart</h1>
@@ -16,7 +20,7 @@ export function CartList() {
             </tr>
           </thead>
           <tbody>
-            <CartItem />
+            {cart.length > 0 ? cart.map(cartItem => <CartItem cart={cartItem} key={cartItem.plant.id} />) : <tr><td style={{ textAlign: "center" }} colSpan={4}>Nenhum item foi adicionado</td></tr>}
           </tbody>
         </table>
       </TableContainer>
@@ -30,11 +34,11 @@ export function CartList() {
           <h2>Cart Summary</h2>
           <Subtotal>
             <p>Subtotal</p>
-            <strong>$ 160.00</strong>
+            <strong>{FormatNumber(getTotalPrice())}</strong>
           </Subtotal>
           <Total>
             <p>Total</p>
-            <strong>$ 160.00</strong>
+            <strong>{FormatNumber(getTotalPrice())}</strong>
           </Total>
           <CheckotButton>Checkout</CheckotButton>
         </SummarySection>

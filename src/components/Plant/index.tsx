@@ -2,17 +2,24 @@ import { ShoppingCart } from "@phosphor-icons/react"
 import { PlantCard, PlantFigure, PlantDesc, AddToCartButton, PlantTags, Tag, Prices } from "./styles"
 import { IPlant } from "../../utils/PlantsList"
 import { FormatNumber } from "../../utils/formatNumber"
+import { useCart } from "../../hooks/useCart"
 
 interface PlantProps {
   plant: IPlant
 }
 
 export function Plant({ plant }: PlantProps) {
+  const { addItemToCart } = useCart()
+
+  function handleAddPlantToCart() {
+    addItemToCart(plant)
+  }
+
   return (
     <PlantCard>
       <PlantFigure>
         <img src={plant.image} />
-        <AddToCartButton className="cart">
+        <AddToCartButton onClick={() => handleAddPlantToCart()} className="cart">
           <ShoppingCart />
           Add to cart
         </AddToCartButton>

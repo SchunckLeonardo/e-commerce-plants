@@ -1,8 +1,11 @@
 import { ShoppingCart } from "@phosphor-icons/react";
 import { HeaderContainer, NavLinks, ImageLogo, ButtonCart } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
 
 export function Header() {
+  const { cart } = useCart()
+
   const navigate = useNavigate()
 
   return (
@@ -18,7 +21,7 @@ export function Header() {
       </NavLinks>
       <ButtonCart onClick={() => navigate('/cart')}>
         <ShoppingCart size={28} weight="thin" />
-        <span className="items_quantity">2</span>
+        {cart.length > 0 ? <span className="items_quantity">{cart.length}</span> : <></>}
       </ButtonCart>
     </HeaderContainer>
   )

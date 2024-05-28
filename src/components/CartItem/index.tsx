@@ -1,32 +1,45 @@
 import { Minus, Plus } from "@phosphor-icons/react";
 import { PlantResume, PriceTable, Quantity, SubtotalTable } from "./styles";
+import { Cart } from "../../context/CartContext";
+import { FormatNumber } from "../../utils/formatNumber";
+import { useCart } from "../../hooks/useCart";
 
-export function CartItem() {
+interface CartItemProps {
+  cart: Cart
+}
+
+export function CartItem({ cart }: CartItemProps) {
+  const { removeItemToCart, decrementQnt, incrementQnt } = useCart()
+
+  function handleRemovePlant() {
+    removeItemToCart(cart)
+  }
+
   return (
     <tr>
       <td>
         <PlantResume>
-          <img src="/images/plant01.jpg" />
+          <img src={cart.plant.image} />
           <div>
-            <h4>Plant 001 - 312</h4>
+            <h4>{cart.plant.desc}</h4>
             <p>Lorem ipsum dolor sit amet.</p>
-            <button>Remove</button>
+            <button onClick={() => handleRemovePlant()}>Remove</button>
           </div>
         </PlantResume>
       </td>
       <td>
         <Quantity>
-          <button>
+          <button onClick={() => decrementQnt(cart)}>
             <Minus size={14} />
           </button>
-          <input type="number" value={1} min={1} max={10} readOnly />
-          <button>
+          <input type="number" value={cart.qnt} readOnly />
+          <button onClick={() => incrementQnt(cart)}>
             <Plus size={14} />
           </button>
         </Quantity>
       </td>
-      <PriceTable>$ 80.00</PriceTable>
-      <SubtotalTable>$ 80.00</SubtotalTable>
+      <PriceTable>{cart.plant.sale.isSaled ? FormatNumber(cart.plant.price * cart.plant.sale.value) : FormatNumber(cart.plant.price)}</PriceTable>
+      <SubtotalTable>{cart.plant.sale.isSaled ? FormatNumber((cart.plant.price * cart.plant.sale.value) * cart.qnt) : FormatNumber(cart.plant.price * cart.qnt)}</SubtotalTable>
     </tr>
   )
 }
